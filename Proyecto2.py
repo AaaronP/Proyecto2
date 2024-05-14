@@ -43,6 +43,11 @@ P es la cantidad de piezas"""
 
 def foo(piezas, n, m,p) -> bool:
     table = [["." for _ in range(m)] for _ in range(n)]
+    Pila=[]
+    while Pila:
+        table2,pieza=Pila.pop()
+def insertarPiezas(Table,Pieza):
+    
 
 def inputFunc():
     # Ancho, Largo, numero de piezas
@@ -57,6 +62,6 @@ def inputFunc():
             aux.append(txt)
         res.append(aux)
 
-    return (int(n), int(m), res)
+    return foo(res,int(n), int(m), p)
 
 print(inputFunc())
