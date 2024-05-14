@@ -47,7 +47,16 @@ def foo(piezas, n, m,p) -> bool:
     while Pila:
         table2,pieza=Pila.pop()
 def insertarPiezas(Table,Pieza):
-    
+    pass
+
+def tomarPieza(M,n=1):
+    n=(4*n)-1
+    mr=[]
+    mr.append(M[n])
+    mr.append(M[n-1])
+    mr.append(M[n-2])
+    mr.append(M[n-3])
+    return mr
 
 def inputFunc():
     # Ancho, Largo, numero de piezas
@@ -62,6 +71,7 @@ def inputFunc():
             aux.append(txt)
         res.append(aux)
 
-    return foo(res,int(n), int(m), p)
+    return tomarPieza(res,2)
+    #return foo(res,int(n), int(m), p)
 
 print(inputFunc())
