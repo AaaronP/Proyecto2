@@ -1,3 +1,4 @@
+
 """Esta funcion es para verificar que no hay espacios"""
 def isFull(table) -> bool:
     for i in range(len(table)):
@@ -39,6 +40,23 @@ def is_valid(table, pieza, i, j):
 """Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
 n es el largo de la matriz final, m el ancho de la matriz final
 P es la cantidad de piezas"""
-def main(piezas, n, m,p) -> bool:
+
+def foo(piezas, n, m,p) -> bool:
     table = [["." for _ in range(m)] for _ in range(n)]
 
+def inputFunc():
+    # Ancho, Largo, numero de piezas
+    n, m, p = input().split()
+
+    # Obtener las piezas
+    res = []
+    for _ in range(int(p)):
+        aux = []
+        for _ in range(4):
+            txt = list(input())
+            aux.append(txt)
+        res.append(aux)
+
+    return (int(n), int(m), res)
+
+print(inputFunc())
