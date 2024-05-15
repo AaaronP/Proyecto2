@@ -1,4 +1,4 @@
-"""Elimina los espacios vacios donde su columna y su fila no contiene una elemento"""
+"""Elimina los espacios vacios donde su columna y su fila no contiene un elemento de la pieza"""
 
 def recortar_matriz(matriz):
     # Encontrar los límites superior, inferior, izquierdo y derecho
