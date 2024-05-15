@@ -1,62 +1,86 @@
-
-"""Esta funcion es para verificar que no hay espacios"""
-def isFull(table) -> bool:
-    for i in range(len(table)):
-        for j in range(len(table[0])):
-            if table[i][j] == ".":
-                return False
-    return True
-
-def rotate(M):
-    n = len(M)
-
-    for i in range(n):
-        for j in range(i):
-            temp = M[i][j]
-            M[i][j] = M[j][i]
-            M[j][i] = temp
-
-    for i in range(n):
-        for j in range(n // 2):
-            temp = M[i][j]
-            M[i][j] = M[i][n - j - 1]
-            M[i][n - j - 1] = temp
-
-    return M
-
-"""Ejemplo de uso
-h = [
-    ["+", "+", "+", "+"],
-    ["+", ".", ".", "."],
-    [".", ".", ".", "."],
-    [".", ".", ".", "."],
-]
-print(rotate(h))"""
+from src.recortar_matriz import recortar_matriz
+from src.rotate import rotate
+from src.isFull import isFull
 
 """Esta funcion es para verificar si se puede insertar una pieza o no"""
+
+
 def is_valid(table, pieza, i, j):
-    pass
+    piezaR = recortar_matriz(pieza)
+    # Verificar que las coordenadas (i, j) estén dentro de los límites del tablero
+    if i < 0 or i + 3 >= len(table) or j < 0 or j + 3 >= len(table[0]):
+        return False
+
+    # Verificar si la pieza cabe completamente dentro del tablero
+    for row in range(len(piezaR)):
+        for col in range(len(piezaR[0])):
+            if piezaR[row][col] != ".":
+                if i + row >= len(table) or j + col >= len(table[0]):
+                    return False
+                if table[i + row][j + col] != ".":
+                    return False
+
+    return True
+
+
+# Ejemplo de uso:
+tablero = [
+    [".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", "."],
+]
+
+# Ejemplo de pieza de 4x4
+pieza = [
+    [".", ".", ".", "."],
+    [".", "X", "X", "."],
+    [".", "X", "X", "."],
+    [".", ".", ".", "."],
+]
+
+# Verificar si la pieza puede ser colocada en el tablero en la posición (3, 3)
+print(is_valid(tablero, pieza, 0, 0))  # Output: True
 
 """Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
 n es el largo de la matriz final, m el ancho de la matriz final
 P es la cantidad de piezas"""
 
-def foo(piezas, n, m,p) -> bool:
+
+def foo(piezas, n, m, p) -> bool:
     table = [["." for _ in range(m)] for _ in range(n)]
-    Pila=[]
-    while Pila:
-        table2,pieza=Pila.pop()
-def insertarPiezas(Table,Pieza):
+    pilaT = [table]
+
+    while pilaT:
+        table2 = pilaT.pop()
+        pieza = piezas.pop()
+
+        if isFull(table2) and pieza == []:
+            return table2
+
+        for i in range(len(table2)):
+            for j in range(len(table2[0])):
+                pass
+
+    # Si no tiene solucion
+    return -1
+
+
+def insertarPiezas(Table, Pieza):
     pass
 
-def tomarPieza(M,n=1):
-    n=(4*n)-1
-    mr=[]
+
+def tomarPieza(M, n=1):
+    n = (4 * n) - 1
+    mr = []
     mr.append(M[n])
-    mr.append(M[n-1])
-    mr.append(M[n-2])
-    mr.append(M[n-3])
+    mr.append(M[n - 1])
+    mr.append(M[n - 2])
+    mr.append(M[n - 3])
     return mr
+
 
 def inputFunc():
     # Ancho, Largo, numero de piezas
@@ -71,7 +95,8 @@ def inputFunc():
             aux.append(txt)
         res.append(aux)
 
-    return tomarPieza(res,2)
-    #return foo(res,int(n), int(m), p)
+    # return tomarPieza(res, 2)
+    return foo(res, int(n), int(m), p)
 
-print(inputFunc())
+
+# inputFunc()
