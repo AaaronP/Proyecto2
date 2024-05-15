@@ -1,48 +1,6 @@
-from src.recortar_matriz import recortar_matriz
 from src.rotate import rotate
 from src.isFull import isFull
-
-"""Esta funcion es para verificar si se puede insertar una pieza o no"""
-
-
-def is_valid(table, pieza, i, j):
-    piezaR = recortar_matriz(pieza)
-    # Verificar que las coordenadas (i, j) estén dentro de los límites del tablero
-    if i < 0 or i + 3 >= len(table) or j < 0 or j + 3 >= len(table[0]):
-        return False
-
-    # Verificar si la pieza cabe completamente dentro del tablero
-    for row in range(len(piezaR)):
-        for col in range(len(piezaR[0])):
-            if piezaR[row][col] != ".":
-                if i + row >= len(table) or j + col >= len(table[0]):
-                    return False
-                if table[i + row][j + col] != ".":
-                    return False
-
-    return True
-
-
-# Ejemplo de uso:
-tablero = [
-    [".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", "."],
-]
-
-# Ejemplo de pieza de 4x4
-pieza = [
-    [".", ".", ".", "."],
-    [".", "X", "X", "."],
-    [".", "X", "X", "."],
-    [".", ".", ".", "."],
-]
-
-# Verificar si la pieza puede ser colocada en el tablero en la posición (3, 3)
-print(is_valid(tablero, pieza, 0, 0))  # Output: True
+from src.isValid import is_valid
 
 """Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
 n es el largo de la matriz final, m el ancho de la matriz final
