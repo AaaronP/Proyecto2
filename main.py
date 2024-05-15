@@ -32,7 +32,7 @@ def katamino(piezas, n, m, p) -> bool:
         table2 = pilaT.pop()
         pieza = piezas.pop()
 
-        if isFull(table2) and pieza == []:
+        if isFull(table2) and not pieza:
             return table2
 
         for i in range(len(table2)):

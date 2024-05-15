@@ -1,4 +1,4 @@
-"""Rota una matriz de nxm -90 grados """
+"""Rota una matriz de nxm -90 grados"""
 
 
 def rotate(M):
