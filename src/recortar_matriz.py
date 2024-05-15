@@ -1,3 +1,5 @@
+"""Elimina los espacios vacios donde su columna y su fila no contiene una elemento"""
+
 def recortar_matriz(matriz):
     # Encontrar los límites superior, inferior, izquierdo y derecho
     fila_superior = None
