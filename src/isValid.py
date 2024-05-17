@@ -1,10 +1,7 @@
-from recortar_matriz import recortar_matriz
-
 """Esta funcion es para verificar si se puede insertar una pieza o no"""
 
 
-def is_valid(table, pieza, i, j):
-    piezaR = recortar_matriz(pieza)
+def is_valid(table, piezaR, i, j):
     # Verificar que las coordenadas (i, j) estén dentro de los límites del tablero
     if (
         i < 0
