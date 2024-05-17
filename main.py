@@ -3,7 +3,7 @@ from src.isFull import isFull
 from src.inputFunc import inputFunc
 from src.isValid import is_valid
 from src.recortar_matriz import recortar_matriz
-
+from src.insertPiece import insertar
 
 def tomarPieza(M, n=1):
     n = (4 * n) - 1
@@ -18,15 +18,6 @@ def tomarPieza(M, n=1):
 """Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
 n es el largo de la matriz final, m el ancho de la matriz final
 P es la cantidad de piezas"""
-
-
-def insertar(table, pieza, i, j):
-    for x in range(len(pieza)):
-        for y in range(len(pieza[0])):
-            if pieza[x][y] != ".":
-                table[i + x][j + y] = pieza[x][y]
-
-    return table
 
 
 def katamino(piezas, n, m, p) -> bool:
