@@ -44,6 +44,7 @@ def katamino(piezas, n, m, p) -> bool:
     #         for j in range(len(table2[0])):
     #             print(table2[i][j])
 
+    inserted = []
     for i in range(len(table)):
         for j in range(len(table[0])):
             x = 0
@@ -51,10 +52,13 @@ def katamino(piezas, n, m, p) -> bool:
                 # Pieza recortada
                 piezaR = recortar_matriz(piezas[x])
 
-                if is_valid(table, piezaR, i, j):
+                # verificamos si se puede insertar
+                # y si la pieza no se ha metido aun
+                if is_valid(table, piezaR, i, j) and not x in inserted:
                     insertar(table, piezaR, i, j)
+                    inserted.append(x)
                 x += 1
- 
+
     print(table)
     # Si no tiene solucion
     return -1
