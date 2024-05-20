@@ -36,6 +36,7 @@ def katamino(piezas, n, m, p):
     #             print(table2[i][j])
 
     inserted = []
+    #EL len del table no deberia de ser siempre de n y el otro de m
     for i in range(len(table)):
         for j in range(len(table[0])):
             x = 0
