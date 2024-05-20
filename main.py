@@ -5,6 +5,7 @@ from src.isValid import is_valid
 from src.recortar_matriz import recortar_matriz
 from src.insertPiece import insertar
 
+
 def tomarPieza(M, n=1):
     n = (4 * n) - 1
     mr = []
