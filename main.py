@@ -21,7 +21,7 @@ n es el largo de la matriz final, m el ancho de la matriz final
 P es la cantidad de piezas"""
 
 
-def katamino(piezas, n, m, p) -> bool:
+def katamino(piezas, n, m, p):
     table = [["." for _ in range(m)] for _ in range(n)]
     pilaT = [table]
 
@@ -37,6 +37,7 @@ def katamino(piezas, n, m, p) -> bool:
     #             print(table2[i][j])
 
     inserted = []
+    #EL len del table no deberia de ser siempre de n y el otro de m
     for i in range(len(table)):
         for j in range(len(table[0])):
             x = 0
