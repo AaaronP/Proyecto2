@@ -15,14 +15,14 @@ Para implementar Katamino en Python, utilizaremos la biblioteca gráfica Tkinter
 |  ├── input1.txt
 |  ├── input2.txt
 ├── src
-│  |-- color.py
-|  |-- inputFunc.py
-|  |-- insertPiece.py
-|  |-- isFull.py
-|  |-- isValid.py
-|  |-- quitar.py
-|  |-- recortar_matriz.py
-|  |-- rotate.py
+│  ├── color.py
+|  ├── inputFunc.py
+|  ├── insertPiece.py
+|  ├── isFull.py
+|  ├── isValid.py
+|  ├── quitar.py
+|  ├── recortar_matriz.py
+|  ├── rotate.py
 ├── LICENSE
 ├── README.md
 └── main.py
