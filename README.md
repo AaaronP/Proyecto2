@@ -8,7 +8,7 @@ Katamino es un juego de mesa diseñado para un solo jugador. Consiste en llenar 
 
 ## Implementación en Python
 
-Para implementar Katamino en Python, utilizaremos la biblioteca gráfica Tkinter para crear la interfaz de usuario y gestionar la interacción con el jugador. También definiremos las reglas del juego y la lógica para colocar las piezas en el tablero.
+Para implementar Katamino en Python, utilizamos backtracking para encontrar la solución más eficientemente. También definiremos las reglas del juego y la lógica para colocar las piezas en el tablero.
 
 ```
 ├── inputs
