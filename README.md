@@ -1,6 +1,6 @@
 # Juego Katamino en Python
 
-El juego Katamino es un desafiante rompecabezas que requiere habilidad espacial y lógica para completar. En este proyecto, vamos a implementar una versión del juego utilizando el lenguaje de programación Python.
+El juego Katamino es un desafiante rompecabezas que requiere habilidad especial y lógica para completar. En este proyecto, vamos a implementar una versión del juego utilizando el lenguaje de programación Python.
 
 ## ¿Qué es Katamino?
 
@@ -35,7 +35,7 @@ El juego Katamino es un desafío fascinante que pondrá a prueba tus habilidades
 ## Contribuidores
 
 -   Aaron Pérez Alfaro
--   Luis Daniel Barboza
+-   Luis Daniel Barboza Alfaro
 -   Aaron Segura Alfaro
 
 ---
