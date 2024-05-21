@@ -36,6 +36,6 @@ El juego Katamino es un desafío fascinante que pondrá a prueba tus habilidades
 
 -   Aaron Pérez Alfaro
 -   Luis Daniel Barboza
--   Aaron Seguro Alfaro
+-   Aaron Segura Alfaro
 
 ---
