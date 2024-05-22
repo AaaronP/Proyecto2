@@ -4,17 +4,7 @@ from src.inputFunc import inputFunc
 from src.isValid import is_valid
 from src.recortar_matriz import recortar_matriz
 from src.insertPiece import insertar
-
-
-def tomarPieza(M, n=1):
-    n = (4 * n) - 1
-    mr = []
-    mr.append(M[n])
-    mr.append(M[n - 1])
-    mr.append(M[n - 2])
-    mr.append(M[n - 3])
-    return mr
-
+from src.grafica import dibujar_tablero
 
 """Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
 n es el largo de la matriz final, m el ancho de la matriz final
@@ -37,7 +27,7 @@ def katamino(piezas, n, m, p):
     #             print(table2[i][j])
 
     inserted = []
-    #EL len del table no deberia de ser siempre de n y el otro de m
+    # EL len del table no deberia de ser siempre de n y el otro de m
     for i in range(len(table)):
         for j in range(len(table[0])):
             x = 0
@@ -52,14 +42,14 @@ def katamino(piezas, n, m, p):
                     inserted.append(x)
                 x += 1
 
-    print(table)
     # Si no tiene solucion
-    return -1
+    return table
 
 
 def main():
     piezas, n, m, p = inputFunc()
-    katamino(piezas, n, m, p)
+    k = katamino(piezas, n, m, p)
+    dibujar_tablero(k)
 
 
 if __name__ == "__main__":
