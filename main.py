@@ -4,6 +4,7 @@ from src.inputFunc import inputFunc
 from src.isValid import is_valid
 from src.recortar_matriz import recortar_matriz
 from src.insertPiece import insertar
+from grafica import dibujar_tablero
 
 
 def tomarPieza(M, n=1):
@@ -37,7 +38,7 @@ def katamino(piezas, n, m, p):
     #             print(table2[i][j])
 
     inserted = []
-    #EL len del table no deberia de ser siempre de n y el otro de m
+    # EL len del table no deberia de ser siempre de n y el otro de m
     for i in range(len(table)):
         for j in range(len(table[0])):
             x = 0
@@ -52,14 +53,14 @@ def katamino(piezas, n, m, p):
                     inserted.append(x)
                 x += 1
 
-    print(table)
     # Si no tiene solucion
-    return -1
+    return table
 
 
 def main():
     piezas, n, m, p = inputFunc()
-    katamino(piezas, n, m, p)
+    k = katamino(piezas, n, m, p)
+    dibujar_tablero(k)
 
 
 if __name__ == "__main__":
