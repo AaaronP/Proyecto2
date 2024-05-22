@@ -17,18 +17,11 @@ def katamino_backtrack(table, piezas, n, m, p):
     return table
   for i in range(n):
     for j in range(m):
-      # Iterate over the pieces.
       for pieza in piezas:
-        # Check if the piece can be inserted at the current cell.
         if is_valid(table, pieza, i, j):
-          # Insert the piece into the table.
           insertar(table, pieza, i, j)
-          # Recursively solve the puzzle with the remaining pieces.
           solution = katamino_backtrack(table, piezas.remove(pieza), n, m, p - 1)
-          # If a solution is found, return it.
           if solution is not None:
             return solution
-          # If no solution is found, remove the piece from the table.
           quitar(table, pieza, i, j)
-  # If no solution is found, return None.
   return None
