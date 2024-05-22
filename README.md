@@ -16,6 +16,7 @@ Para implementar Katamino en Python, utilizamos backtracking para encontrar la s
 |  ├── input2.txt
 ├── src
 │  ├── color.py
+|  ├── grafica.py
 |  ├── inputFunc.py
 |  ├── insertPiece.py
 |  ├── isFull.py
