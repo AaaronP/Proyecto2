@@ -4,18 +4,7 @@ from src.inputFunc import inputFunc
 from src.isValid import is_valid
 from src.recortar_matriz import recortar_matriz
 from src.insertPiece import insertar
-from grafica import dibujar_tablero
-
-
-def tomarPieza(M, n=1):
-    n = (4 * n) - 1
-    mr = []
-    mr.append(M[n])
-    mr.append(M[n - 1])
-    mr.append(M[n - 2])
-    mr.append(M[n - 3])
-    return mr
-
+from src.grafica import dibujar_tablero
 
 """Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
 n es el largo de la matriz final, m el ancho de la matriz final
