@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Antes de correr el programa con pip debes instalar [pygame](https://pypi.org/project/pygame/)
+> Antes de correr el programa con pip, debes instalar [pygame](https://pypi.org/project/pygame/)
 > ```bash
 > pip install pygame
 > ```
