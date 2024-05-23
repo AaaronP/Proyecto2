@@ -1,14 +1,16 @@
 def inputFunc():
     # Ancho, Largo, numero de piezas
-    n, m, p = input().split()
+    n, m, p = list(map(int, input().split()))
 
     # Obtener las piezas
     res = []
-    for _ in range(int(p)):
+    for _ in range(p):
         aux = []
         for _ in range(4):
             txt = list(input())
             aux.append(txt)
-        res.append(aux)
+        res.append((aux, 0))
 
-    return (res, int(n), int(m), p)
+    return (res, n, m, p)
+
+print(inputFunc())
