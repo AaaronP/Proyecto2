@@ -152,6 +152,8 @@ def katamino(piezas, n, m, p):
 def main():
     piezas, n, m, p = inputFunc()
     k = katamino(piezas, n, m, p)
+
+    if k == -1: return -1
     dibujar_tablero(k)
 
 
