@@ -14,21 +14,19 @@ def katamino_backtrack(table, piezas, n, m, p):
     p: el numero de puezas.
   """
   # [([], 0), ([], 0)]
-  if isFull(table):
+  if isFull(table) and not piezas:
     return table
+
   for i in range(n):
     for j in range(m):
-      for pieza in piezas:
+      for pieza, contador in piezas:
         if is_valid(table, pieza, i, j):
           insertar(table, pieza, i, j)
           piezas.remove(pieza)
           solution = katamino_backtrack(table, piezas, n, m, p - 1)
 
-          # pieza = T[0]
-          # piezasC = T[1]
-
-          if not solution and piezasC <= 3:
-            piezas.append((rotate(pieza, piezasC + 1)))
+          if not solution and contador <= 3:
+            piezas.append((rotate(pieza), contador + 1))
             
           if solution is not None:
             return solution
