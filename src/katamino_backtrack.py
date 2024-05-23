@@ -22,7 +22,7 @@ def katamino_backtrack(table, piezas, n, m, p):
       for pieza, contador in piezas:
         if is_valid(table, pieza, i, j):
           insertar(table, pieza, i, j)
-          piezas.remove(pieza)
+          piezas.remove((pieza, contador))
           solution = katamino_backtrack(table, piezas, n, m, p - 1)
 
           if not solution and contador <= 3:
