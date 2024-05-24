@@ -1,5 +1,15 @@
-import pygame
+import os, sys
 import random
+
+# Elimina el print por defecto de pygame
+sys.stdout = open(os.devnull, "w")
+sys.stderr = open(os.devnull, "w")
+
+import pygame
+
+sys.stdout = sys.__stdout__
+sys.stderr = sys.__stderr__
+
 
 ANCHO, ALTO = 400, 400
 TAMANO_CELDA = 40
@@ -26,6 +36,7 @@ def dibujar_tablero(matriz):
     COLUMNAS = len(matriz[0])
 
     pygame.init()
+
     pantalla = pygame.display.set_mode((ANCHO, ALTO))
     pygame.display.set_caption("Tablero de Katamino")
 
