@@ -32,7 +32,7 @@ Para implementar Katamino en Python, utilizamos backtracking para encontrar la s
 ├── LICENSE
 ├── README.md
 ├── grafica.py
-└── main.py
+└── perez1.seguro2.barboza3.py
 ```
 
 ## Conclusión
