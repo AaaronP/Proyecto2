@@ -1,3 +1,4 @@
+from src.grafica import dibujar_tablero
 def isFull(table) -> bool:
     for i in range(len(table)):
         for j in range(len(table[0])):
@@ -125,6 +126,8 @@ def katamino_backtrack(table, piezas, n, m, p):
             solution = katamino_backtrack(table, piezas, n, m, p - 1)
             if solution == -1:
               quitar(table, color(pieza))
+            else:
+                return solution
       contador+=1
       pieza=rotate(pieza)
     piezas.insert(0,(pieza,0))
@@ -135,8 +138,6 @@ def main():
     piezas, n, m, p = inputFunc()
     table = [["." for _ in range(m)] for _ in range(n)]
     k = katamino_backtrack(table,piezas, n, m, p)
-
-    return k
     if k == -1: return -1
     dibujar_tablero(k)
 
