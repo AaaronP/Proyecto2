@@ -1,9 +1,10 @@
 > [!IMPORTANT]
 > Antes de correr el programa, con pip debes instalar [pygame](https://pypi.org/project/pygame/)
+>
 > ```bash
 > pip install pygame
 > ```
- 
+
 # Juego Katamino en Python
 
 El juego Katamino es un desafiante rompecabezas que requiere habilidad especial y lógica para completar. En este proyecto, vamos a implementar una versión del juego utilizando el lenguaje de programación Python.
@@ -17,21 +18,9 @@ Katamino es un juego de mesa diseñado para un solo jugador. Consiste en llenar 
 Para implementar Katamino en Python, utilizamos backtracking para encontrar la solución más eficientemente. También definiremos las reglas del juego y la lógica para colocar las piezas en el tablero.
 
 ```
-├── inputs
-|  ├── input1.txt
-|  ├── input2.txt
-├── src
-│  ├── color.py
-|  ├── grafica.py
-|  ├── inputFunc.py
-|  ├── insertPiece.py
-|  ├── isFull.py
-|  ├── isValid.py
-|  ├── quitar.py
-|  ├── recortar_matriz.py
-|  ├── rotate.py
 ├── LICENSE
 ├── README.md
+├── grafica.py
 └── main.py
 ```
 
