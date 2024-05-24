@@ -1,4 +1,5 @@
-from src.grafica import dibujar_tablero
+from grafica import dibujar_tablero
+
 
 def isFull(table) -> bool:
     for i in range(len(table)):
@@ -7,37 +8,35 @@ def isFull(table) -> bool:
                 return False
     return True
 
+
 def rotate(M):
-    n = len(M)
+    m = len(M[0])
+    r = []
+    for x in range(m):
+        fila = []
+        n = len(M) - 1
+        while n >= 0:
+            fila.append(M[n][x])
+            n -= 1
+        r.append(fila)
+    return r
 
-    for i in range(n):
-        for j in range(i):
-            temp = M[i][j]
-            M[i][j] = M[j][i]
-            M[j][i] = temp
-
-    for i in range(n):
-        for j in range(n // 2):
-            temp = M[i][j]
-            M[i][j] = M[i][n - j - 1]
-            M[i][n - j - 1] = temp
-
-    return M
 
 def inputFunc():
     # Ancho, Largo, numero de piezas
-    n, m, p = input().split()
+    n, m, p = list(map(int, input().split()))
 
     # Obtener las piezas
     res = []
-    for _ in range(int(p)):
+    for _ in range(p):
         aux = []
         for _ in range(4):
             txt = list(input())
             aux.append(txt)
-        res.append(aux)
+        res.append((aux, 0))
 
-    return (res, int(n), int(m), p)
+    return (res, n, m, p)
+
 
 def is_valid(table, piezaR, i, j):
     # Verificar que las coordenadas (i, j) estén dentro de los límites del tablero
@@ -59,6 +58,7 @@ def is_valid(table, piezaR, i, j):
                     return False
 
     return True
+
 
 def recortar_matriz(matriz):
     # Encontrar los límites superior, inferior, izquierdo y derecho
@@ -86,6 +86,7 @@ def recortar_matriz(matriz):
     ]
     return matriz_recortada
 
+
 def insertar(table, pieza, i, j):
     for x in range(len(pieza)):
         for y in range(len(pieza[0])):
@@ -94,12 +95,14 @@ def insertar(table, pieza, i, j):
 
     return table
 
+
 def color(pieza):
     for i in range(len(pieza)):
         for j in range(len(pieza[0])):
             if pieza[i][j] != ".":
                 return pieza[i][j]
     return "."
+
 
 # Color: elemento identificar de la pieza
 def quitar(table, color):
@@ -109,51 +112,45 @@ def quitar(table, color):
                 table[i][j] = "."
     return table
 
-"""Este es nuestro main, en donde piezas es una matriz en donde se decriben las piezas, 
-n es el largo de la matriz final, m el ancho de la matriz final
-P es la cantidad de piezas"""
 
-
-def katamino(piezas, n, m, p):
-    table = [["." for _ in range(m)] for _ in range(n)]
-    pilaT = [table]
-
-    # while pilaT:
-    #     table2 = pilaT.pop()
-    #     pieza = piezas.pop()
-
-    #     if isFull(table2) and not pieza:
-    #         return table2
-
-    #     for i in range(len(table2)):
-    #         for j in range(len(table2[0])):
-    #             print(table2[i][j])
-
-    inserted = []
-    # EL len del table no deberia de ser siempre de n y el otro de m
-    for i in range(len(table)):
-        for j in range(len(table[0])):
-            x = 0
-            while x < len(piezas):
-                # Pieza recortada
-                piezaR = recortar_matriz(piezas[x])
-
-                # verificamos si se puede insertar
-                # y si la pieza no se ha metido aun
-                if is_valid(table, piezaR, i, j) and not x in inserted:
-                    insertar(table, piezaR, i, j)
-                    inserted.append(x)
-                x += 1
-
-    # Si no tiene solucion
-    return table
+def katamino_backtrack(table, piezas, n, m, p):
+    """
+    Esta funcion soluciona el puzzle de katamino usando un algoritmo de backtracking en donde
+      table: A 2D list representing the table where the pieces will be placed.
+      piezas: es la lista de piezas.
+      n: el largo del tablero.
+      m: el ancho del tablero.
+      p: el numero de puezas.
+    """
+    # [([], 0), ([], 0)]
+    if piezas == []:
+        return table
+    for pieza, contador in piezas:
+        piezas.remove((pieza, contador))
+        pieza = recortar_matriz(pieza)
+        while contador <= 3:
+            for i in range(n):
+                for j in range(m):
+                    if is_valid(table, pieza, i, j):
+                        insertar(table, pieza, i, j)
+                        solution = katamino_backtrack(table, piezas, n, m, p - 1)
+                        if solution == -1:
+                            quitar(table, color(pieza))
+                        else:
+                            return solution
+            contador += 1
+            pieza = rotate(pieza)
+        piezas.insert(0, (pieza, 0))
+        return -1
+    return -1
 
 
 def main():
     piezas, n, m, p = inputFunc()
-    k = katamino(piezas, n, m, p)
-
-    if k == -1: return -1
+    table = [["." for _ in range(m)] for _ in range(n)]
+    k = katamino_backtrack(table, piezas, n, m, p)
+    if k == -1:
+        return -1
     dibujar_tablero(k)
 
 
