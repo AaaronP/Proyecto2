@@ -148,9 +148,10 @@ def katamino_backtrack(table, piezas, n, m, p):
 def main():
     piezas, n, m, p = inputFunc()
     table = [["." for _ in range(m)] for _ in range(n)]
-    k = katamino_backtrack(table, piezas, n, m, p)
-    if k == -1:
-        return -1
+    k = katamino_backtrack(table,piezas, n, m, p)
+    if k == -1: 
+        print(k)
+        return k
     dibujar_tablero(k)
 
 
