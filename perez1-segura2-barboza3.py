@@ -152,6 +152,12 @@ def main():
     if k == -1:
         print(k)
         return k
+
+    # ascii
+    for i in k:
+        print("".join(i))
+
+    # grafica
     dibujar_tablero(k)
 
 
