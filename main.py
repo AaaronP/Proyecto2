@@ -1,7 +1,7 @@
 from grafica import dibujar_tablero
 
 
-def isFull(table) -> bool:
+def isFull(table):
     for i in range(len(table)):
         for j in range(len(table[0])):
             if table[i][j] == ".":
@@ -104,7 +104,7 @@ def color(pieza):
     return "."
 
 
-# Color: elemento identificar de la pieza
+# Color: elemento identificador de la pieza
 def quitar(table, color):
     for i in range(len(table)):
         for j in range(len(table[0])):
