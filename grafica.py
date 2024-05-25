@@ -21,32 +21,37 @@ colores = {}
 
 
 def generar_color_aleatorio():
+    # obtemos colores aleatorios
     return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 
 def obtener_color(valor):
+    # verificamos que no existan colores iguales
     if valor not in colores:
         colores[valor] = generar_color_aleatorio()
     return colores[valor]
 
 
 def dibujar_tablero(matriz):
-    # Dimensiones del tablero basadas en la matriz
+    # Dimensiones del tablero
     FILAS = len(matriz)
     COLUMNAS = len(matriz[0])
 
+    # iniciamos el app
     pygame.init()
 
+    # definimos las dimensiones del tablero y cuadros
     pantalla = pygame.display.set_mode((ANCHO, ALTO))
     pygame.display.set_caption("Tablero de Katamino")
 
     reloj = pygame.time.Clock()
     corriendo = True
 
+    # Termina hasta que se cierra el app
     while corriendo:
         pantalla.fill(BLANCO)
 
-        # Dibujar celdas del tablero basadas en la matriz
+        # Dibujar celdas del tablero
         for fila in range(FILAS):
             for col in range(COLUMNAS):
                 valor = matriz[fila][col]
@@ -75,6 +80,7 @@ def dibujar_tablero(matriz):
                     1,
                 )
 
+        # eventListener
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 corriendo = False

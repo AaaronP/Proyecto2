@@ -62,29 +62,24 @@ def is_valid(table, piezaR, i, j):
 
 def recortar_matriz(matriz):
     # Encontrar los límites superior, inferior, izquierdo y derecho
-    fila_superior = None
-    fila_inferior = None
-    columna_izquierda = None
-    columna_derecha = None
+    fsuperior = None
+    finferior = None
+    cizquierda = None
+    cderecha = None
 
     for i, fila in enumerate(matriz):
         for j, valor in enumerate(fila):
             if valor != ".":
-                fila_superior = i if fila_superior is None else min(fila_superior, i)
-                fila_inferior = i if fila_inferior is None else max(fila_inferior, i)
-                columna_izquierda = (
-                    j if columna_izquierda is None else min(columna_izquierda, j)
-                )
-                columna_derecha = (
-                    j if columna_derecha is None else max(columna_derecha, j)
-                )
+                fsuperior = i if fsuperior is None else min(fsuperior, i)
+                finferior = i if finferior is None else max(finferior, i)
+                cizquierda = j if cizquierda is None else min(cizquierda, j)
+                cderecha = j if cderecha is None else max(cderecha, j)
 
     # Recortar la matriz usando los límites encontrados
-    matriz_recortada = [
-        fila[columna_izquierda : columna_derecha + 1]
-        for fila in matriz[fila_superior : fila_inferior + 1]
+    matrizR = [
+        fila[cizquierda : cderecha + 1] for fila in matriz[fsuperior : finferior + 1]
     ]
-    return matriz_recortada
+    return matrizR
 
 
 def insertar(table, pieza, i, j):
@@ -149,11 +144,15 @@ def main():
     piezas, n, m, p = inputFunc()
     table = [["." for _ in range(m)] for _ in range(n)]
     k = katamino_backtrack(table, piezas, n, m, p)
-    if k == -1:
-        print(k)
-        return k
 
+    # si no encontro resultado
+    if k == -1:
+        print(-1)
+        return -1
+
+    # si contiene algun espacio vacio
     if not isFull(k):
+        print(-1)
         return -1
 
     # ascii
