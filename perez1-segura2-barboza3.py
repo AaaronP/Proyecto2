@@ -153,6 +153,9 @@ def main():
         print(k)
         return k
 
+    if not isFull(k):
+        return -1
+
     # ascii
     for i in k:
         print("".join(i))
